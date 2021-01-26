@@ -19,7 +19,7 @@ endif
 # #############################################
 
 RESCOMP = windres
-TARGETDIR = bin/DEBUG
+TARGETDIR = .
 TARGET = $(TARGETDIR)/GifMaker.exe
 OBJDIR = obj
 DEFINES +=
@@ -52,13 +52,17 @@ OBJECTS :=
 
 GENERATED += $(OBJDIR)/Image.o
 GENERATED += $(OBJDIR)/animator.o
+GENERATED += $(OBJDIR)/duktape.o
 GENERATED += $(OBJDIR)/main.o
 GENERATED += $(OBJDIR)/renderer.o
+GENERATED += $(OBJDIR)/scriptanimator.o
 GENERATED += $(OBJDIR)/stbi_impl.o
 OBJECTS += $(OBJDIR)/Image.o
 OBJECTS += $(OBJDIR)/animator.o
+OBJECTS += $(OBJDIR)/duktape.o
 OBJECTS += $(OBJDIR)/main.o
 OBJECTS += $(OBJDIR)/renderer.o
+OBJECTS += $(OBJDIR)/scriptanimator.o
 OBJECTS += $(OBJDIR)/stbi_impl.o
 
 # Rules
@@ -129,10 +133,16 @@ $(OBJDIR)/Image.o: GifMaker/src/Image.cpp
 $(OBJDIR)/animator.o: GifMaker/src/animator.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/duktape.o: GifMaker/src/duktape.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/main.o: GifMaker/src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/renderer.o: GifMaker/src/renderer.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/scriptanimator.o: GifMaker/src/scriptanimator.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/stbi_impl.o: GifMaker/src/stbi_impl.cpp

@@ -9,6 +9,7 @@ project "GifMaker"
 
     files {
         "GifMaker/src/**.cpp",
+        "GifMaker/src/**.c",
     }
 
     includedirs {

@@ -10,6 +10,15 @@ Renderer::Renderer(int width, int height)
     fillColor = { 255, 255, 255, 255 };
 }
 
+void Renderer::Resize(int width, int height)
+{
+    this->width = width;
+    this->height = height;
+
+    delete[] this->data;
+    this->data = new Pixel[GetSize()];
+}
+
 void Renderer::Clear()
 {
     for (int i = 0; i < GetSize(); i++)

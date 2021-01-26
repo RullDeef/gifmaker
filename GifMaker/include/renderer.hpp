@@ -67,7 +67,9 @@ public:
         MULTIPLY
     };
 
-    Renderer(int width, int height);
+    Renderer(int width = 1, int height = 1);
+
+    void Resize(int width, int height);
 
     // fills entire image with fill color
     // works regardless of render type
