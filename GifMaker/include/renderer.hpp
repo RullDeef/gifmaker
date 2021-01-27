@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <vector>
 #include "image.hpp"
 
@@ -7,6 +8,13 @@ struct FloatPoint
 {
     float x;
     float y;
+
+    static FloatPoint Polar(float radius, float angle)
+    {
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+        return { x, y };
+    }
 
     inline FloatPoint operator+(const FloatPoint& other) const
     {

@@ -491,6 +491,7 @@ void ScriptAnimator::PrepareDuktapeEnv()
     PUT_PROP(prepTime);
     PUT_PROP(framesCount);
     PUT_PROP(frameRate);
+    PUT_PROP(lineWidth);
     PUT_PROP(blendType);
 
 #undef PUT_PROP

@@ -1,5 +1,7 @@
 # GifMaker
 
+[![CodeFactor](https://www.codefactor.io/repository/github/rulldeef/gifmaker/badge/master)](https://www.codefactor.io/repository/github/rulldeef/gifmaker/overview/master)
+
 ## Examples
 
 | ![](eg-gifs/code-1.jpg) | ![](eg-gifs/out-1.gif) |
