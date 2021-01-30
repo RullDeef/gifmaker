@@ -427,13 +427,21 @@ static duk_ret_t renderer_Arc(duk_context *ctx)
 {
     try
     {
-        if (!(duk_get_top(ctx) == 5 || duk_get_top(ctx) == 6) ||
-            !duk_check_type(ctx, -1, DUK_TYPE_NUMBER) ||
-            !duk_check_type(ctx, -2, DUK_TYPE_NUMBER) ||
-            !duk_check_type(ctx, -3, DUK_TYPE_NUMBER) ||
+        if (duk_get_top(ctx) < 5 || duk_get_top(ctx) > 6
+            || (duk_get_top(ctx) == 5 && (
+            !duk_check_type(ctx, -5, DUK_TYPE_NUMBER) ||
             !duk_check_type(ctx, -4, DUK_TYPE_NUMBER) ||
-            (duk_get_top(ctx) == 6 &&
-            !duk_check_type(ctx, -5, DUK_TYPE_BOOLEAN)))
+            !duk_check_type(ctx, -3, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -2, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -1, DUK_TYPE_NUMBER)))
+            || (duk_get_top(ctx) == 6 && (
+            !duk_check_type(ctx, -6, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -5, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -4, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -3, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -2, DUK_TYPE_NUMBER) ||
+            !duk_check_type(ctx, -1, DUK_TYPE_BOOLEAN)))
+            )
         {
             std::cout << "Render.Arc(x, y, radius, startAngle, endAngle[, clockwise=true]) - draws arc\n";
             return DUK_RET_TYPE_ERROR;
